@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Glacier Analysis - {{ name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f9ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px;
+            width: 70%;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .risk-high {
+            color: red;
+            font-weight: bold;
+        }
+
+        .risk-low {
+            color: green;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: #005f99;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Glacier Detailed Analysis</h1>
+    <h2>{{ name }}</h2>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h3>📍 Geographic Information</h3>
+        <p><strong>Country:</strong> {{ data.country }}</p>
+        <p><strong>Latitude:</strong> {{ data.latitude }}</p>
+        <p><strong>Longitude:</strong> {{ data.longitude }}</p>
+        <p><strong>Elevation:</strong> {{ data.elevation_m }} meters</p>
+    </div>
+
+    <div class="card">
+    <h3>🛰 Live Satellite View</h3>
+    <iframe
+        width="100%"
+        height="400"
+        src="https://www.google.com/maps?q={{data.latitude}},{{data.longitude}}&z=10&output=embed"
+        style="border:0; border-radius:10px;">
+    </iframe>
+    </div>
+
+    <div class="card">
+        <h3>📊 Physical Characteristics</h3>
+        <p><strong>Length:</strong> {{ data.length_km }} km</p>
+        <p><strong>Area:</strong> {{ data.area_km2 }} km²</p>
+        <p><strong>Retreat Rate:</strong> {{ data.retreat_rate_m_per_year }} m/year</p>
+        <p><strong>Temperature Increase:</strong> {{ data.temperature_increase }} °C</p>
+    </div>
+
+    <div class="card">
+        <h3>🤖 AI/ML Risk Analysis</h3>
+        <p>
+            <strong>Predicted Risk Level:</strong>
+            {% if risk == "HIGH" %}
+                <span class="risk-high">HIGH RISK</span>
+            {% else %}
+                <span class="risk-low">LOW RISK</span>
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🧠 Deep Learning Forecast</h3>
+        <p>
+            <strong>Predicted Future Retreat Rate:</strong>
+            {{ future_retreat }} m/year
+        </p>
+    </div>
+
+    <center>
+        <a href="/">
+            <button class="back-btn">Back to Home</button>
+        </a>
+    </center>
+
+</div>
+
+</body>
+</html>
