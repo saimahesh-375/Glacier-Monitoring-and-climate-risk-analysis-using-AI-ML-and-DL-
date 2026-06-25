@@ -9,21 +9,19 @@ import tensorflow as tf
 
 app = Flask(__name__)
 
-# -----------------------------
 # LOAD MODELS
-# -----------------------------
+
 ml_model = joblib.load("models/ml_risk_model.pkl")
 dl_model = tf.keras.models.load_model("models/dl_retreat_model.h5")
 scaler = joblib.load("models/scaler.pkl")
 
-# -----------------------------
 # LOAD DATASET
-# -----------------------------
+
 df = pd.read_csv("data/glacier_climate.csv")
 
-# -----------------------------
+
 # ML RISK PREDICTION
-# -----------------------------
+
 def predict_ml_risk(glacier_name):
 
     glacier = df[df["glacier_name"] == glacier_name]
@@ -43,10 +41,8 @@ def predict_ml_risk(glacier_name):
 
     return "HIGH" if prediction[0] == 1 else "LOW"
 
-
-# -----------------------------
 # DL FUTURE RETREAT PREDICTION
-# -----------------------------
+
 def predict_future_retreat(glacier_name):
 
     glacier = df[df["glacier_name"] == glacier_name]
@@ -62,9 +58,8 @@ def predict_future_retreat(glacier_name):
     return round(float(future[0][0]), 2)
 
 
-# -----------------------------
 # HOME ROUTE - SHOW ALL 50 GLACIERS
-# -----------------------------
+
 @app.route("/", methods=["GET", "POST"])
 def index():
 
@@ -124,9 +119,9 @@ def index():
     )
 
 
-# -----------------------------
+
 # GLACIER DETAILS PAGE
-# -----------------------------
+
 @app.route("/glacier/<name>")
 def glacier_detail(name):
 
@@ -148,9 +143,9 @@ def glacier_detail(name):
         future_retreat=future_retreat
     )
 
-# -----------------------------
+
 # RUN APP
-# -----------------------------
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
 
