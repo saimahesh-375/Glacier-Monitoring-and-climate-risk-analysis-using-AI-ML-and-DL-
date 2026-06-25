@@ -4,9 +4,7 @@ An AI-powered web application that monitors glaciers, predicts climate risk leve
 
 ---
 
-## 🚀 Live Demo
 
-🌐 https://glacier-monitoring.onrender.com
 
 ---
 
@@ -156,7 +154,7 @@ Purpose:
 
 ## 🌐 Deployment
 
-The application is deployed on Render and can be accessed using:
+Deployment is currently under maintenance while the complete AI prediction pipeline is being optimized.
 
 [https://glacier-monitoring.onrender.com]
 
