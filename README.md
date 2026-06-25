@@ -12,7 +12,7 @@ An AI-powered web application that monitors glaciers, predicts climate risk leve
 
 ## 📂 GitHub Repository
 
-https://github.com/saimahesh-375/Glacier-Monitoring-and-climate-risk-analysis-using-AI-ML-and-DL-
+https://github.com/saimahesh-375/Glacier-Monitoring-AI
 
 ---
 
